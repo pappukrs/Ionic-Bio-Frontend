@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Table</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="height: 100%">
+  <div style="position: absolute; top: 15%; left: 5%;right:5%; width: 100%;">
+    <table class="ion-activatable" border="1" [style]="'width: 100%;height:100%'">
+      <caption>Single User      Bio</caption>
+      <thead>
+        <tr>
+          <th>Property</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Name</td>
+          <td>{{tableData.name}}</td>
+        </tr>
+        <tr>
+          <td>Qualification</td>
+          <td>{{tableData.qualification}}</td>
+        </tr>
+        <tr>
+          <td>Height</td>
+          <td>{{tableData.height}}</td>
+        </tr>
+        <tr>
+          <td>Weight</td>
+          <td>{{tableData.weight}}</td>
+        </tr>
+        <tr>
+          <td>Gender</td>
+          <td>{{tableData.gender}}</td>
+        </tr>
+        <tr>
+          <td>Country</td>
+          <td>
+            <ng-container *ngFor="let c of tableData.country; let last = last">
+              ({{ c.country }}-{{ c.probability }})
+              <ng-container *ngIf="!last">or</ng-container>
+            </ng-container>
+          </td>
+        </tr>
+        <tr>
+          <td>Actions</td>
+          <td>
+            <ion-button (click)="onUpdate(tableData._id)" fill="clear" size="small">
+              <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+            </ion-button>
+            <ion-button (click)="onDelete(tableData._id)" fill="clear" size="small">
+              <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+            </ion-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ion-content>

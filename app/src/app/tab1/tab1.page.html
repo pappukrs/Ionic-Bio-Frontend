@@ -1,0 +1,31 @@
+<ion-header >
+  <ion-toolbar color="warning">
+    <ion-title class="ion-text-center" color="light">
+      Bio-Data
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()" [style]="'margin-top:30%'">
+    <ion-item [style]="'margin-top:5%'">
+      
+      <ion-input formControlName="name" label="Name"></ion-input>
+    </ion-item>
+    <ion-item [style]="'margin-top:5%'">
+      
+      <ion-input formControlName="qualification" label="Qualification"></ion-input>
+    </ion-item >
+    <ion-item [style]="'margin-top:5%'">
+      
+      <ion-input formControlName="height" label="Height"></ion-input>
+    </ion-item>
+    <ion-item [style]="'margin-top:5%'">
+      
+      <ion-input formControlName="weight" label="Weight"></ion-input>
+    </ion-item>
+    <ion-button type="submit" [style]="'margin:2% 25% 0% 25%;width:50%'">Submit</ion-button>
+  </form>
+  
+  
+</ion-content>

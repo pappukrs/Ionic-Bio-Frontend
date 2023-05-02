@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="ion-text-center" color="warning">
+    <ion-buttons slot="start">
+      <ion-button (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Bio-Data List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+   <table border="1" >
+    <caption></caption>
+    <thead>
+      <tr [style]="'fontSize:10px;'">
+        <th>Id</th>
+        <th >Name</th>
+        <th>Qual.</th>
+        <th>Height</th>
+        <th>Weight</th>
+        <th>Gender</th>
+        <th>Country</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ele of data" [style]="'fontSize:10px;'">
+        <td>{{ele._id}}</td>
+        <td>{{ele.name}}</td>
+        <td>{{ele.qualification}}</td>
+        <td>{{ele.height}}</td>
+        <td>{{ele.weight}}</td>
+        <td>{{ele.gender}}</td>
+        <td >
+          <ng-container *ngFor="let c of ele.country; let last = last">
+            ({{ c.country }}-{{ c.probability }})
+            <ng-container *ngIf="!last">or</ng-container>
+          </ng-container>
+        </td>
+       
+        <td>
+          <ion-button (click)="onView(ele._id)" [style]="'fontSize:8px;padding:0;margin:0;'">
+            <ion-icon name="eye-outline" [style]="'padding:0;margin:0;'"></ion-icon>
+          </ion-button >
+          <ion-button (click)="onUpdate(ele._id)" [style]="'fontSize:8px;padding:0;margin:0;'">
+            <ion-icon name="create-outline" [style]="'padding:0;margin:0;'" ></ion-icon>
+          </ion-button>
+          <ion-button (click)="onDelete(ele._id)" [style]="'fontSize:8px;padding:0;margin:0;'">
+            <ion-icon name="trash-outline" [style]="'padding:0;margin:0;'" ></ion-icon>
+          </ion-button>
+        </td>
+      </tr>
+    </tbody>
+    
+    
+   </table>
+
+
+   
+   
+
+   
+   
+  
+</ion-content>
