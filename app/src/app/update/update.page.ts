@@ -43,7 +43,7 @@ export class UpdatePage implements OnInit {
 
   
   onSubmit() {
-    this.apiService.updateSingleList(this.myForm.value,this.id).subscribe((res)=>{
+    this.apiService.updateSingleList(this.id,this.myForm.value).subscribe((res)=>{
       console.log("res",res);
       console.log("published")
       this.myForm.setValue({

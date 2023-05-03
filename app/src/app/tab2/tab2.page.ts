@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 import { ApiService } from '../service/api.service';
 import { Location } from '@angular/common';
+import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-tab2',
   templateUrl: 'tab2.page.html',
@@ -16,7 +18,9 @@ export class Tab2Page {
     private formBuilder: FormBuilder,
     private apiService: ApiService,
     private navCtrl: NavController,
-    private location:Location
+    private location:Location,
+    private alertCtrl: AlertController,
+    private router:Router
   ) {
     this.myForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -44,9 +48,9 @@ export class Tab2Page {
         
         .subscribe((response: any) => {
           console.log('mqttPublish');
-          alert('published');
+          // alert('published');
         });
-      alert('published');
+      this.msgAlert();
       this.myForm.setValue({
         name:"",
         qualification:"",
@@ -54,6 +58,21 @@ export class Tab2Page {
         weight:""
       })
     }
+  }
+
+  async msgAlert(){
+   const alert= await this.alertCtrl.create({
+    header: "Confirmation Message",
+    message:"Successfully data published to broker",
+    buttons:[{
+      text: "OK",
+      handler:()=>{
+        console.log("mqtt published");
+        this.router.navigate([`tabs/tab3`]);
+      }
+    }],
+   })
+   await alert.present();
   }
 
 

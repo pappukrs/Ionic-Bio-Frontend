@@ -28,6 +28,7 @@ interface tableData {
 export class Tab3Page implements OnInit {
    data:tableData[] ;
    socket: Socket;
+  // url = 'ws://localhost:9000';
   url = 'ws://localhost:9000';
   constructor(private apiService:ApiService,private alertController:AlertController,private router:Router,private location:Location) {
     this.data=[];
@@ -70,6 +71,7 @@ ngOnInit(): void {
       this.data=[...res]
       console.log(res,"res");
       console.log("data",this.data);
+      
      })
  }
 

@@ -38,19 +38,11 @@ export class TablePage implements OnInit {
   goBack() {
     this.location.back();
   }
-
-
-  onView(id:any){
-    console.log("onView",id);
-     this.router.navigate([`table/${id}`]);
-   }
    onDelete(id:any){
     this.showAlert(id);
    }
    onUpdate(id:any){
     this.router.navigate([`update/${id}`]);
-
-     
    }
   
    async showAlert(id:any){
@@ -67,9 +59,11 @@ export class TablePage implements OnInit {
       {
         text:"yes",
         handler: () =>{
+          
           this.apiService.deleteSingleList(id).subscribe((res)=>{
-  
+        
           })
+          this.router.navigate([`tabs/tab3`]);
         }
       }
       

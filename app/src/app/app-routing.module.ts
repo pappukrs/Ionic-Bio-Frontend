@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { Tab1PageModule } from './tab1/tab1.module';
 
 const routes: Routes = [
   {
@@ -13,6 +14,9 @@ const routes: Routes = [
   {
     path: 'update/:id',
     loadChildren: () => import('./update/update.module').then( m => m.UpdatePageModule)
+  },{
+    path:'list',
+    loadChildren: () => import('./tab3/tab3.module').then(m => m.Tab3PageModule)
   }
   
  
